@@ -1,0 +1,23 @@
+<h2>Stock</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>SKU</th>
+      <th>Quantity</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (row of rows(); track row.sku) {
+      <tr>
+        <td class="name">{{ row.name }}</td>
+        <td class="sku">{{ row.sku }}</td>
+        <td class="quantity">{{ row.quantity }}</td>
+        <td class="status" [class]="'status ' + row.status">{{ row.statusLabel }}</td>
+      </tr>
+    } @empty {
+      <tr><td colspan="4">No stock items.</td></tr>
+    }
+  </tbody>
+</table>

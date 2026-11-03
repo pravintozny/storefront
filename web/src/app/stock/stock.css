@@ -1,0 +1,5 @@
+table { border-collapse: collapse; width: 100%; }
+th, td { padding: 0.5rem 0.75rem; text-align: left; border-bottom: 1px solid #ddd; }
+.status.in-stock { color: #1b7f3b; }
+.status.low-stock { color: #b26a00; }
+.status.out-of-stock { color: #b00020; }
