@@ -1,0 +1,6 @@
+table { border-collapse: collapse; width: 100%; }
+th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid #ddd; }
+.badge { padding: 0.1rem 0.5rem; border-radius: 1rem; font-size: 0.85rem; text-transform: capitalize; }
+.badge.active { background: #d4f5dd; }
+.badge.inactive { background: #eee; }
+.badge.pending { background: #fff3c4; }
