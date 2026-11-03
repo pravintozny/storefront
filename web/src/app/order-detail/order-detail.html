@@ -1,0 +1,34 @@
+@if (order(); as o) {
+  <article class="order">
+    <h1 class="order-number">{{ o.orderNumber }}</h1>
+    <p class="order-date">{{ o.orderDate | date: 'mediumDate' : 'UTC' }}</p>
+    <p class="status" [attr.data-status]="o.status">{{ o.status }}</p>
+    <p class="customer">{{ o.customerName }} ({{ o.customerEmail }})</p>
+
+    <table class="lines">
+      <thead>
+        <tr><th>Product</th><th>SKU</th><th>Qty</th><th>Unit price</th><th>Line total</th></tr>
+      </thead>
+      <tbody>
+        @for (l of o.lines; track l.sku) {
+          <tr class="line">
+            <td class="product">{{ l.productName }}</td>
+            <td class="line-sku">{{ l.sku }}</td>
+            <td class="qty">{{ l.quantity }}</td>
+            <td class="unit-price">{{ l.unitPrice | currency: o.currency }}</td>
+            <td class="line-total">{{ lineTotal(l) | currency: o.currency }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+    <dl class="totals">
+      <dt>Subtotal</dt><dd class="subtotal">{{ subtotal() | currency: o.currency }}</dd>
+      <dt>Shipping</dt><dd class="shipping">{{ o.shipping | currency: o.currency }}</dd>
+      <dt>Tax</dt><dd class="tax">{{ o.tax | currency: o.currency }}</dd>
+      <dt>Total</dt><dd class="total">{{ total() | currency: o.currency }}</dd>
+    </dl>
+  </article>
+} @else {
+  <p class="not-found">Order not found.</p>
+}

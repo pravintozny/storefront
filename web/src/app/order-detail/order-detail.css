@@ -1,0 +1,7 @@
+.order { max-width: 40rem; margin: 2rem auto; font-family: sans-serif; }
+.lines { width: 100%; border-collapse: collapse; }
+.lines th, .lines td { text-align: left; padding: 0.25rem 0.5rem; border-bottom: 1px solid #ddd; }
+.status { text-transform: capitalize; font-weight: 600; }
+.totals { display: grid; grid-template-columns: 1fr auto; max-width: 16rem; margin-left: auto; }
+.totals dd { margin: 0; text-align: right; }
+.total { font-weight: 700; }
