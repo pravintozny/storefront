@@ -1,0 +1,27 @@
+<section class="customer-base">
+  <h2>Customer Base</h2>
+  @if (customers.length === 0) {
+    <p class="empty">No customers found.</p>
+  } @else {
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Joined</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (c of customers; track c.id) {
+          <tr>
+            <td class="name">{{ c.name }}</td>
+            <td class="email">{{ c.email }}</td>
+            <td class="status"><span class="badge" [class]="'badge ' + c.status">{{ c.status }}</span></td>
+            <td class="joined">{{ c.joinedDate | date: 'mediumDate' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>
