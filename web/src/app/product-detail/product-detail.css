@@ -1,0 +1,4 @@
+.product { max-width: 32rem; margin: 2rem auto; font-family: sans-serif; }
+.price { font-size: 1.5rem; font-weight: 600; }
+.availability { color: #1a7f37; }
+.availability.out { color: #b42318; }

@@ -1,0 +1,12 @@
+@if (product(); as p) {
+  <article class="product">
+    <h1 class="name">{{ p.name }}</h1>
+    <p class="sku">SKU: {{ p.sku }}</p>
+    <p class="description">{{ p.description }}</p>
+    <p class="price">{{ p.price | currency: p.currency }}</p>
+    <p class="availability" [class.out]="!p.inStock">{{ p.inStock ? 'In stock' : 'Out of stock' }}</p>
+    <button type="button" [disabled]="!p.inStock">Add to cart</button>
+  </article>
+} @else {
+  <p class="not-found">Product not found.</p>
+}
