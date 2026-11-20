@@ -1,0 +1,40 @@
+<section class="stores">
+  <h2>Store management</h2>
+
+  <form (ngSubmit)="save()" #f="ngForm" class="store-form">
+    <input name="name" placeholder="Name" [(ngModel)]="form.name" required />
+    <input name="location" placeholder="Location" [(ngModel)]="form.location" required />
+    <input name="manager" placeholder="Manager" [(ngModel)]="form.manager" />
+    <select name="status" [(ngModel)]="form.status">
+      @for (s of statuses; track s) {
+        <option [value]="s">{{ s }}</option>
+      }
+    </select>
+    <button type="submit" [disabled]="f.invalid">{{ editingId() === null ? 'Add store' : 'Save changes' }}</button>
+    @if (editingId() !== null) {
+      <button type="button" (click)="cancel()">Cancel</button>
+    }
+  </form>
+
+  <table>
+    <thead>
+      <tr><th>Name</th><th>Location</th><th>Manager</th><th>Status</th><th></th></tr>
+    </thead>
+    <tbody>
+      @for (store of stores(); track store.id) {
+        <tr>
+          <td>{{ store.name }}</td>
+          <td>{{ store.location }}</td>
+          <td>{{ store.manager }}</td>
+          <td><span class="status" [class]="'status ' + store.status">{{ store.status }}</span></td>
+          <td>
+            <button type="button" (click)="edit(store)">Edit</button>
+            <button type="button" (click)="remove(store)">Delete</button>
+          </td>
+        </tr>
+      } @empty {
+        <tr><td colspan="5">No stores yet.</td></tr>
+      }
+    </tbody>
+  </table>
+</section>
