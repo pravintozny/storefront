@@ -1,0 +1,24 @@
+<h2>Create a store</h2>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label>Name <input formControlName="name" /></label>
+  @if (form.controls.name.touched && form.controls.name.invalid) {
+    <small class="error">Name is required (min 3 characters).</small>
+  }
+  <label>Category
+    <select formControlName="category">
+      <option value="">Select…</option>
+      @for (c of categories; track c) { <option [value]="c">{{ c }}</option> }
+    </select>
+  </label>
+  <label>Email <input type="email" formControlName="email" /></label>
+  @if (form.controls.email.touched && form.controls.email.invalid) {
+    <small class="error">A valid email is required.</small>
+  }
+  <label>Description <textarea formControlName="description"></textarea></label>
+  <button type="submit">Create store</button>
+</form>
+@if (created()) { <p class="success">Store "{{ created() }}" created.</p> }
+<h3>Stores</h3>
+<ul>
+  @for (s of storeService.stores(); track s.id) { <li>{{ s.name }} — {{ s.category }}</li> }
+</ul>
