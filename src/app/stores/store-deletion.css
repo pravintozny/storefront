@@ -1,0 +1,7 @@
+.store-deletion { max-width: 32rem; margin: 1rem auto; font-family: sans-serif; }
+ul { list-style: none; padding: 0; }
+li { display: flex; justify-content: space-between; align-items: center; padding: .5rem 0; border-bottom: 1px solid #ddd; }
+.delete, .confirm-btn { background: #c62828; color: #fff; border: 0; padding: .35rem .8rem; border-radius: 4px; cursor: pointer; }
+.cancel-btn { margin-left: .5rem; padding: .35rem .8rem; }
+.confirm { margin-top: 1rem; padding: 1rem; border: 1px solid #c62828; border-radius: 4px; }
+.success { color: #2e7d32; }
