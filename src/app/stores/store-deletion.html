@@ -1,0 +1,25 @@
+<section class="store-deletion">
+  <h2>Delete a store</h2>
+  @if (message()) {
+    <p class="success" role="status">{{ message() }}</p>
+  }
+  @if (service.stores().length === 0) {
+    <p class="empty">No stores left.</p>
+  } @else {
+    <ul>
+      @for (store of service.stores(); track store.id) {
+        <li>
+          <span>{{ store.name }} <small>({{ store.category }})</small></span>
+          <button type="button" class="delete" (click)="requestDelete(store)">Delete</button>
+        </li>
+      }
+    </ul>
+  }
+  @if (pending(); as store) {
+    <div class="confirm" role="alertdialog" aria-label="Confirm deletion">
+      <p>Delete <strong>{{ store.name }}</strong>? This cannot be undone.</p>
+      <button type="button" class="confirm-btn" (click)="confirm()">Confirm</button>
+      <button type="button" class="cancel-btn" (click)="cancel()">Cancel</button>
+    </div>
+  }
+</section>
